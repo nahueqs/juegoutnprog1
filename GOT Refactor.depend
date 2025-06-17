@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1749212340 source:c:\users\mati\desktop\prog1 1c\got refactor\main.cpp
+	<iostream>
+
+1749213043 source:c:\users\mati\desktop\prog1 1c\got refactor\menues.cpp
+	<iostream>
+
+1750118132 source:c:\users\nahue\documents\utn\prog1\got refactor\main.cpp
+	<iostream>
+	"menues.h"
+	"sesionDeJuego.h"
+
+1749215454 c:\users\nahue\documents\utn\prog1\got refactor\menues.h
+
+1749214112 c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.h
+
+1749215452 c:\users\nahue\documents\utn\prog1\got refactor\menues.cpp
+	<iostream>
+
+1749215453 c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.cpp
+	<iostream>
+
+1749215452 source:c:\users\nahue\documents\utn\prog1\got refactor\menues.cpp
+	<iostream>
+
+1749215453 source:c:\users\nahue\documents\utn\prog1\got refactor\sesiondejuego.cpp
+	<iostream>
+
