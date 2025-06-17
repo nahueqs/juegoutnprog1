@@ -3,4 +3,7 @@
 
 void inicioDeJuego(int estadisticas[], int casa);
 
+
+
+
 #endif // SESIONDEJUEGO_H_INCLUDED
