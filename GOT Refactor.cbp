@@ -34,6 +34,18 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="GOT Refactor.depend" />
+		<Unit filename="batallas.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="batallas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="casas.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="casas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="menues.cpp" />
 		<Unit filename="menues.h" />

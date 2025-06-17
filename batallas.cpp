@@ -10,6 +10,4 @@ int getPorcChanceGanarSegunRonda(rondaActual){
 
 void iniciarBatalla(int rondaActual, int numSoldadosCombatientes) {
     int chanceGanar =  getPorcChanceGanarSegunRonda(rondaActual);
-
-
 }
