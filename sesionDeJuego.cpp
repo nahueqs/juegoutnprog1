@@ -16,7 +16,7 @@ void inicioDeJuego(int estadisticas[], int casa){
     system("pause");
     /// (1) *************************************    INICIO DECLARACIÓN DE VARIABLES Y CONSTANTES  *************************************///
     /// JUGABILIDAD
-    const int presupuesto_inicial = 50000;
+    const int presupuesto_inicial = 50000; // cambia segun casa
     int oro = presupuesto_inicial;
 
     const int soldados_inicial = 0;
@@ -70,7 +70,7 @@ void inicioDeJuego(int estadisticas[], int casa){
         cout << "---------------------------------------"               << endl;
         cout << "            Juego de Tronos            "               << endl;
         cout << "---------------------------------------"               << endl;
-        cout << "~LANNISTER "                                           << endl;
+        cout << casa                                            << endl;
         cout << "|batallas realizadas : " << batalla_actual                  << endl;
         cout << "|presupuesto         : " << presupuesto_inicial             << endl;
         cout << "|oro                 : " << oro                             << endl;
