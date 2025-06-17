@@ -1,4 +1,5 @@
 #include<iostream>
+#include "casas.cpp"
 using namespace std;
 
 /// ESTADISTICAS
@@ -16,7 +17,9 @@ void inicioDeJuego(int estadisticas[], int casa){
     system("pause");
     /// (1) *************************************    INICIO DECLARACIÓN DE VARIABLES Y CONSTANTES  *************************************///
     /// JUGABILIDAD
-    const int presupuesto_inicial = 50000; // cambia segun casa
+    //constante
+    const int presupuesto_inicial = getOroInicialSegunCasa(casa); // cambia segun casa
+    //variable
     int oro = presupuesto_inicial;
 
     const int soldados_inicial = 0;
@@ -29,8 +32,8 @@ void inicioDeJuego(int estadisticas[], int casa){
     float pasiva_probabilidad = pasiva_probabilidad_inicial;
 
     /// TIENDA
-    const int valor_x_soldado       = 1000;
-    const int valor_x_comida        = 500;
+    const int valor_x_soldado       = getCostoSoldadoSegunCasa(casa);
+    const int valor_x_comida        = getCostoComidaSegunCasa(casa);
     const int valor_x_mejora_pasiva = 10000;
 
     // articulo: objeto que se compra en la tienda, el valor refiere a la cantidad.
@@ -118,6 +121,7 @@ void inicioDeJuego(int estadisticas[], int casa){
             if(cin_batalla_deseas_continuar == 2)
             {
                 deseas_continuar=false;
+
             }
             else
             {
@@ -263,4 +267,8 @@ void inicioDeJuego(int estadisticas[], int casa){
         }
         /// (3) ***********************************  FIN ESTRUCTURA DE SELECCIÓN DEL MENÚ Y LÓGICA DEL JUEGO    ***********************************///
     }
+
+
+
+
 }
