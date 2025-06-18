@@ -33,14 +33,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="GOT Refactor.depend" />
 		<Unit filename="admBatallas.cpp" />
 		<Unit filename="admBatallas.h" />
 		<Unit filename="admCasas.cpp" />
 		<Unit filename="admCasas.h" />
-		<Unit filename="batallas.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="menues.cpp" />
 		<Unit filename="menues.h" />

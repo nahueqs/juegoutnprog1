@@ -14,8 +14,7 @@ string getNombreCasaSeleccionada(int numCasa);
 // referido a habilidades
 int getCostoMejorarHabilidadPasivaSegunCasa(int numCasa);
 int getCostoMejorarHabilidadActivaSegunCasa(int numCasa);
-
-float getPorcMejoraHabilidadActivaSegunCasa(int numCasa);
+float getArticuloMejoraHabilidadActivaSegunCasa(int numCasa);
 
 
 #endif // CASAS_H_INCLUDED

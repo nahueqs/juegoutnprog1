@@ -2,7 +2,6 @@
 using namespace std;
 const int cant_casas_en_juego = 3;
 const string vector_nombre_casas[cant_casas_en_juego] = {"LANNISTER", "STARK", "TARGARYEN" };
-// Agregar 4to
 
 const int v_oro_inicial_segun_casa[cant_casas_en_juego] = {75000,50000,50000};
 
@@ -24,7 +23,7 @@ int getCostoMejorarHabilidadPasivaSegunCasa(int numCasaElegida) {
     return v_costos_mejorar_habilidad_activa_segun_casa[numCasaElegida - 1];
 }
 
-float getPorcMejoraHabilidadActivaSegunCasa(int numCasaElegida){
+float getArticuloMejoraHabilidadActivaSegunCasa(int numCasaElegida){
     return v_porcentaje_mejora_habilidad_activa_segun_casa[numCasaElegida -1];
 }
 
