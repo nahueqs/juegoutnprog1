@@ -1,5 +1,6 @@
 #ifndef BATALLAS_H_INCLUDED
 #define BATALLAS_H_INCLUDED
+
 // funciones relacionadas a las batallas ----------
 // void iniciarBatalla(int numRonda, int numSoldadosCombatientes); FUNCION GRANDE
 // int getRondaActual()
@@ -13,8 +14,8 @@
 // int getPorcChanceGanarSegunRonda(int numRonda);
 // void mostrarBalancePostBatalla(int numRonda); (modifica el oro, las tropas perdidas, etc
 
-float getPorcChanceGanarSegunRonda();
-void iniciarBatalla(int numRonda, int numSoldadosCombatientes);
+float getChanceGanarSegunRonda();
+bool iniciarBatalla(int numRonda, int numSoldadosCombatientes);
 
 
 #endif // BATALLAS_H_INCLUDED

@@ -8,7 +8,8 @@ void mostrarEstadisticas(int estadisticas[], int tam);
 void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJugador, int batalla_actual);
 void mostrarResumenBatalla(const std::vector<float>& recursosJugador);
 void menuTienda(std::vector<float>& recursosJugador, int casaElegida, int estadisticas[]);
-void mostrarMensajeBatallaActual(int batalla_actual, int duracion_guerra);
+void mostrarMensajePreBatalla(int batalla_actual, int duracion_guerra);
+void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra);
 void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& batalla_actual, int duracion_guerra);
 
 

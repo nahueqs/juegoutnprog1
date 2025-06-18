@@ -1,6 +1,6 @@
 #ifndef SESIONDEJUEGO_H_INCLUDED
 #define SESIONDEJUEGO_H_INCLUDED
-#include "menues.h"
+#include "admCasas.h"
 
 void inicioDeJuego(int estadisticas[], int casaElegida);
 // funciones relacionadas al inicio del juego ----------

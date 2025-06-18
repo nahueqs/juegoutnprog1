@@ -1,7 +1,7 @@
 #include<iostream>
 #include "menues.h"
-#include "sesionDeJuego.h"
-#include "admCasas.h"
+#include "indicesVectores.h"
+
 using namespace std;
 
 int seleccionDeCasa(){
@@ -24,14 +24,14 @@ void mostrarEstadisticas(int estadisticas[], int tam){
     cout << "---------------------------------------"               << endl;
     cout <<"Estadisticas de la ultima partida: "<<endl;
     cout << "---------------------------------------"               << endl;
-    cout<<" batalla_cantidad_victorias ="<<estadisticas[0]<<endl;
-    cout<<" batalla_cantidad_derrotas  ="<<estadisticas[1]<<endl;
-    cout<<" total_gastado_oro          ="<<estadisticas[2]<<endl;
-    cout<<" total_gastado_comida       ="<<estadisticas[3]<<endl;
-    cout<<" total_gastado_soldados     ="<<estadisticas[4]<<endl;
-    cout<<" total_ganado_oro           ="<<estadisticas[5]<<endl;
-    cout<<" total_ganado_comida        ="<<estadisticas[6]<<endl;
-    cout<<" total_ganado_soldados      ="<<estadisticas[7]<<endl;
+    cout<<" batalla_cantidad_victorias ="<<estadisticas[batalla_cantidad_victorias]<<endl;
+    cout<<" batalla_cantidad_derrotas  ="<<estadisticas[batalla_cantidad_derrotas]<<endl;
+    cout<<" total_gastado_oro          ="<<estadisticas[total_ganado_oro]<<endl;
+    cout<<" total_gastado_comida       ="<<estadisticas[total_gastado_comida]<<endl;
+    cout<<" total_gastado_soldados     ="<<estadisticas[total_ganado_soldados]<<endl;
+    cout<<" total_ganado_oro           ="<<estadisticas[total_ganado_oro]<<endl;
+    cout<<" total_ganado_comida        ="<<estadisticas[total_ganado_oro]<<endl;
+    cout<<" total_ganado_soldados      ="<<estadisticas[total_ganado_soldados]<<endl;
     cout << "---------------------------------------"               << endl;
 }
 
@@ -43,10 +43,10 @@ void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJug
     cout << getNombreCasaSeleccionada(casaElegida) << endl;
     cout << "|batallas realizadas : " << batalla_actual << endl;
     cout << "|presupuesto inicial : " << getOroInicialSegunCasa(casaElegida) << endl;
-    cout << "|oro                 : " << recursosJugador[0] << endl;
-    cout << "|comida              : " << recursosJugador[1] << endl;
-    cout << "|soldados            : " << recursosJugador[2] << endl;
-    cout << "|pasiva              : " << recursosJugador[4] << endl;
+    cout << "|oro                 : " << recursosJugador[oro] << endl;
+    cout << "|comida              : " << recursosJugador[comida] << endl;
+    cout << "|soldados            : " << recursosJugador[soldados] << endl;
+    cout << "|pasiva              : " << recursosJugador[chance_hab_pasiva] << endl;
     cout << "---------------------------------------" << endl;
     cout << "1. IR A LA BATALLA" << endl;
     cout << "2. TIENDA" << endl;
@@ -55,7 +55,7 @@ void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJug
     cout << "OPCION: ";
 }
 
-void mostrarMensajeBatallaActual(int batalla_actual, int duracion_guerra){
+void mostrarMensajePreBatalla(int batalla_actual, int duracion_guerra){
     if (batalla_actual == duracion_guerra) {
         cout << "~~ ULTIMA BATALLA ~~\n" << endl;
     }
@@ -64,8 +64,10 @@ void mostrarMensajeBatallaActual(int batalla_actual, int duracion_guerra){
     system("pause");
 }
 
+void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra);
+
 void mostrarResumenBatalla(const std::vector<float>& recursosJugador) {
-    cout << "Soldados: " << recursosJugador[2] << endl;
+    //cout << "Soldados: " << recursosJugador[indice_soldados] << endl;
     cout << "Comida: " << recursosJugador[1] << endl;
     cout << "Probabilidad de pasiva: " << recursosJugador[4] << endl;
     cout << endl;
@@ -89,7 +91,9 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& bata
         system("cls");
         // LOGICA DE BATALLA
         batalla_actual++;
-        mostrarMensajeBatallaActual(batalla_actual, duracion_guerra);
+        mostrarMensajePreBatalla(batalla_actual, duracion_guerra);
+        //iniciarBatalla(batalla_actual, duracion_guerra, recursosJugador, estadisticas)
+        // mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
     }
 }
 
