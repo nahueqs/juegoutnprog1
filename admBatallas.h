@@ -13,7 +13,7 @@
 // int getPorcChanceGanarSegunRonda(int numRonda);
 // void mostrarBalancePostBatalla(int numRonda); (modifica el oro, las tropas perdidas, etc
 
-int getPorcChanceGanarSegunRonda();
+float getPorcChanceGanarSegunRonda();
 void iniciarBatalla(int numRonda, int numSoldadosCombatientes);
 
 

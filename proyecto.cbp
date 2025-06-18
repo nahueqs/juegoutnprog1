@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="GOT Refactor" />
+		<Option title="tp_final_grupo_46" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Option virtualFolders="Headers/" />
@@ -34,13 +34,11 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="GOT Refactor.depend" />
-		<Unit filename="batallas.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="admBatallas.cpp" />
+		<Unit filename="admBatallas.h" />
+		<Unit filename="admCasas.cpp" />
+		<Unit filename="admCasas.h" />
 		<Unit filename="batallas.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="casas.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="casas.h">

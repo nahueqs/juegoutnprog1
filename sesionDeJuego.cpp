@@ -1,6 +1,9 @@
 #include<iostream>
-#include "casas.cpp"
+#include "admCasas.h"
+#include "admBatallas.h"
+#include <iomanip>
 using namespace std;
+
 
 /// ESTADISTICAS
 const int batalla_cantidad_victorias = 0;
@@ -13,12 +16,12 @@ const int total_ganado_comida        = 6;
 const int total_ganado_soldados      = 7;
 
 void inicioDeJuego(int estadisticas[], int casa){
-    cout<<"CASA SELECCIONADA: "<<casa;
+    cout<<"CASA SELECCIONADA: "<<getNombreCasaSeleccionada(casa);
     system("pause");
     /// (1) *************************************    INICIO DECLARACIÓN DE VARIABLES Y CONSTANTES  *************************************///
     /// JUGABILIDAD
     //constante
-    const int presupuesto_inicial = getOroInicialSegunCasa(casa); // cambia segun casa
+    const int presupuesto_inicial = getOroInicialSegunCasa(casa);
     //variable
     int oro = presupuesto_inicial;
 
@@ -32,9 +35,10 @@ void inicioDeJuego(int estadisticas[], int casa){
     float pasiva_probabilidad = pasiva_probabilidad_inicial;
 
     /// TIENDA
-    const int valor_x_soldado       = getCostoSoldadoSegunCasa(casa);
+    const float valor_x_soldado      = getValorSoldadoSegunCasa(casa);
+    const float valor_x_1000_soldados       = getValorSoldadoSegunCasa(casa) * 1000;
     const int valor_x_comida        = getCostoComidaSegunCasa(casa);
-    const int valor_x_mejora_pasiva = 10000;
+    const int valor_x_mejora_pasiva = getCostoMejorarHabilidadSegunCasa(casa);
 
     // articulo: objeto que se compra en la tienda, el valor refiere a la cantidad.
     const int articulo_soldados        = 1000;
@@ -73,7 +77,7 @@ void inicioDeJuego(int estadisticas[], int casa){
         cout << "---------------------------------------"               << endl;
         cout << "            Juego de Tronos            "               << endl;
         cout << "---------------------------------------"               << endl;
-        cout << casa                                            << endl;
+        cout << getNombreCasaSeleccionada(casa)<< endl;
         cout << "|batallas realizadas : " << batalla_actual                  << endl;
         cout << "|presupuesto         : " << presupuesto_inicial             << endl;
         cout << "|oro                 : " << oro                             << endl;
@@ -166,7 +170,7 @@ void inicioDeJuego(int estadisticas[], int casa){
                 system("cls");
 
                 cout << "---------------------------------------" << endl;
-                cout << "~LANNISTER"                              << endl;
+                cout << getNombreCasaSeleccionada(casa)                              << endl;
                 cout << "|presupuesto: " << presupuesto_inicial   << endl;
                 cout << "|oro        : " << oro                   << endl;
                 cout << "|comida     : " << comida                << endl;
@@ -175,7 +179,7 @@ void inicioDeJuego(int estadisticas[], int casa){
                 cout << "---------------------------------------" << endl;
                 cout << "TIENDA" << endl;
                 cout << "---------------------------------------" << endl;
-                cout << "1. Soldados          $" << valor_x_soldado        << " x " << articulo_soldados        << " unidades." << endl;
+                cout << "1. Soldados          $" << valor_x_soldado        << " x " << articulo_soldados        << " unidades. Total por 1000 soldados = $" << valor_x_1000_soldados << endl;
                 cout << "2. Comida            $" << valor_x_comida         << " x " << articulo_comida          << " unidades." << endl;
                 cout << "3. Mejorar pasiva    $" << valor_x_mejora_pasiva  << " x +" << articulo_mejora_pasiva   << "." << endl;
                 cout << "4. Volver al menu principal" << endl;

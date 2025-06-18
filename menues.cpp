@@ -10,8 +10,8 @@ int seleccionDeCasa(){
     cout << "---------------------------------------"               << endl;
     cout << "1- LANNISTER " <<endl;
     cout << "2- STARK     " <<endl;
-    cout << "3- BARATHEON " <<endl;
-    cout << "4- TARGARYEN " <<endl;
+    cout << "3- TARGARYEN"<<endl;
+    cout << "4- BARATHEON " <<endl;
     cout << "---------------------------------------"               << endl;
     cin>>opcion;
     return opcion;
