@@ -36,6 +36,7 @@ void mostrarEstadisticas(int estadisticas[], int tam){
 }
 
 void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJugador, int batalla_actual) {
+    system("cls");
     cout << "---------------------------------------" << endl;
     cout << "            Juego de Tronos            " << endl;
     cout << "---------------------------------------" << endl;
@@ -54,6 +55,15 @@ void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJug
     cout << "OPCION: ";
 }
 
+void mostrarMensajeBatallaActual(int batalla_actual, int duracion_guerra){
+    if (batalla_actual == duracion_guerra) {
+        cout << "~~ ULTIMA BATALLA ~~\n" << endl;
+    }
+    cout << "Batalla NRO " << batalla_actual << endl;
+    cout << "Presiona cualquier tecla para volver al menu.";
+    system("pause");
+}
+
 void mostrarResumenBatalla(const std::vector<float>& recursosJugador) {
     cout << "Soldados: " << recursosJugador[2] << endl;
     cout << "Comida: " << recursosJugador[1] << endl;
@@ -61,18 +71,40 @@ void mostrarResumenBatalla(const std::vector<float>& recursosJugador) {
     cout << endl;
 }
 
+void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& batalla_actual, int duracion_guerra){
+    int cin_batalla_deseas_continuar;
+    if (batalla_actual > duracion_guerra) {
+        cout << "No hay mas batallas por luchar, puedes descansar!" << endl;
+        system("pause");
+        return;
+    }
+    mostrarResumenBatalla(recursosJugador);
+    cout << "Deseas continuar? 1(SI) / 2(NO)\nopcion: ";
+    cin >> cin_batalla_deseas_continuar;
+    if (cin_batalla_deseas_continuar == 2){
+        cout << "Volviendo al menu anterior..."<<endl;
+        system("pause");
+        return;
+    } else {
+        system("cls");
+        // LOGICA DE BATALLA
+        batalla_actual++;
+        mostrarMensajeBatallaActual(batalla_actual, duracion_guerra);
+    }
+}
+
 void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadisticas[]) {
-    const int articulo_soldados        = 1000;
-    const int articulo_comida          = 500;
-    const int valor_x_comida           = 500;
+    const int articulo_soldados= 1000;
+    const int articulo_comida = 500;
+    const int valor_x_comida = 500;
     const float articulo_mejora_activa = getArticuloMejoraHabilidadActivaSegunCasa(casaElegida);
     const float valor_x_articulo_soldado = getValorSoldadoSegunCasa(casaElegida) * articulo_soldados;
-    const int valor_x_mejora_activa    = getCostoMejorarHabilidadActivaSegunCasa(casaElegida);
+    const int valor_x_mejora_activa = getCostoMejorarHabilidadActivaSegunCasa(casaElegida);
 
-    const int idx_opcion_tienda_soldados      = 1;
-    const int idx_opcion_tienda_comida        = 2;
+    const int idx_opcion_tienda_soldados = 1;
+    const int idx_opcion_tienda_comida = 2;
     const int idx_opcion_tienda_mejora_pasiva = 3;
-    const int idx_opcion_tienda_volver        = 4;
+    const int idx_opcion_tienda_volver = 4;
 
     int cin_opcion_tienda = 0;
 

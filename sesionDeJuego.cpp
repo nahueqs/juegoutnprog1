@@ -1,5 +1,6 @@
 #include<iostream>
 #include <vector>
+#include <limits>
 #include <iomanip>
 #include "sesionDeJuego.h"
 #include "admCasas.h"
@@ -34,10 +35,8 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
     setRecursosInicialesJugador(casaElegida, recursosJugador);
     const int duracion_guerra = 10;
     int batalla_actual = 0;
-    int cin_opcion_menu;
-    int cin_batalla_deseas_continuar;
-    bool deseas_continuar;
 
+    int cin_opcion_menu;
     const int idx_opcion_menu_batalla = 1;
     const int idx_opcion_menu_tienda  = 2;
     const int idx_opcion_menu_volver  = 3;
@@ -46,39 +45,22 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
         mostrarMenuPrincipal(casaElegida, recursosJugador, batalla_actual);
         cin >> cin_opcion_menu;
         system("cls");
+        if (cin.fail()) {
+            cin.clear(); // limpia el error
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpia el búfer
+            cout << "Entrada inválida. Ingrese un número"<<endl;
+            system("pause");
+            system("cls");
+           // continue; // vuelve a mostrar el menú
+        }
 
         switch(cin_opcion_menu) {
             case idx_opcion_menu_batalla:
-                if (batalla_actual > duracion_guerra) {
-                    cout << "No hay mas batallas por luchar, puedes descansar!" << endl;
-                    system("pause");
-                    break;
-                }
-
-                mostrarResumenBatalla(recursosJugador);
-
-                cout << "Deseas continuar? 1(SI) / 2(NO)\nopcion: ";
-                cin >> cin_batalla_deseas_continuar;
-                deseas_continuar = (cin_batalla_deseas_continuar != 2);
-
-                if (!deseas_continuar) break;
-
-                system("cls");
-                batalla_actual++;
-
-                if (batalla_actual == duracion_guerra) {
-                    cout << "~~ ULTIMA BATALLA ~~\n" << endl;
-                }
-
-                cout << "Batalla NRO " << batalla_actual << endl;
-                cout << "Presiona cualquier tecla para volver al menu.";
-                system("pause");
+                menuBatalla(casaElegida, recursosJugador, batalla_actual, duracion_guerra);
                 break;
-
             case idx_opcion_menu_tienda:
                 menuTienda(recursosJugador, casaElegida, estadisticas);
                 break;
-
             case idx_opcion_menu_volver:
                 return;
         }

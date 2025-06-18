@@ -30,19 +30,19 @@
 1750130477 c:\users\nahue\documents\utn\prog1\got refactor\casas.cpp
 	<iostream>
 
-1750228889 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\main.cpp
+1750229133 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\main.cpp
 	<iostream>
 	"menues.h"
 	"sesionDeJuego.h"
 
-1750229058 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.h
+1750281661 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.h
 	"sesionDeJuego.h"
 	<vector>
 
 1750229156 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.h
 	"menues.h"
 
-1750229054 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
+1750281637 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
 	<iostream>
 	"menues.h"
 	"sesionDeJuego.h"
@@ -60,9 +60,10 @@
 1750223008 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.h
 	<string>
 
-1750229129 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.cpp
+1750279988 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.cpp
 	<iostream>
 	<vector>
+	<limits>
 	<iomanip>
 	"sesionDeJuego.h"
 	"admCasas.h"
