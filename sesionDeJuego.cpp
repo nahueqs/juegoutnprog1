@@ -1,7 +1,9 @@
 #include<iostream>
+#include <vector>
 #include "admCasas.h"
 #include "admBatallas.h"
 #include <iomanip>
+
 using namespace std;
 
 
@@ -15,48 +17,45 @@ const int total_ganado_oro           = 5;
 const int total_ganado_comida        = 6;
 const int total_ganado_soldados      = 7;
 
-void inicioDeJuego(int estadisticas[], int casa){
-    cout<<"CASA SELECCIONADA: "<<getNombreCasaSeleccionada(casa);
+void setRecursosInicialesJugador(int numCasaElegida, std::vector<float>& v_recursosJugador) {
+    v_recursosJugador[0] = getOroInicialSegunCasa(numCasaElegida);
+    v_recursosJugador[1] = 0; //  comida del jugador
+    v_recursosJugador[2] = 0; //  soldados del jugador
+    v_recursosJugador[3] = getChanceHabActivaInicialSegunCasa(numCasaElegida); // % de activacion de la habilidad activa del jugador
+    v_recursosJugador[4] = 0.5; // pos pasiva
+}
+
+void inicioDeJuego(int estadisticas[], int casaElegida){
+    cout<<"CASA SELECCIONADA: "<<getNombreCasaSeleccionada(casaElegida);
     system("pause");
+
     /// (1) *************************************    INICIO DECLARACIÓN DE VARIABLES Y CONSTANTES  *************************************///
+
     /// JUGABILIDAD
-    //constante
-    const int presupuesto_inicial = getOroInicialSegunCasa(casa);
-    //variable
-    int oro = presupuesto_inicial;
-
-    const int soldados_inicial = 0;
-    int soldados = soldados_inicial;
-
-    const int comida_inicial = 0;
-    int comida = comida_inicial;
-
-    const float pasiva_probabilidad_inicial = 0.5;
-    float pasiva_probabilidad = pasiva_probabilidad_inicial;
+    // recursos iniciales
+    vector<float> recursosJugador(5);
+    setRecursosInicialesJugador(casaElegida, recursosJugador);
 
     /// TIENDA
-    const float valor_x_soldado      = getValorSoldadoSegunCasa(casa);
-    const float valor_x_1000_soldados       = getValorSoldadoSegunCasa(casa) * 1000;
-    const int valor_x_comida        = getCostoComidaSegunCasa(casa);
-    const int valor_x_mejora_pasiva = getCostoMejorarHabilidadSegunCasa(casa);
-
-    // articulo: objeto que se compra en la tienda, el valor refiere a la cantidad.
-    const int articulo_soldados        = 1000;
+    // articulo: objeto que se compra en la tienda, el valor refiere a la cantidad
+    const int articulo_soldados        = 1000; // mil soldados
     const int articulo_comida          = 500;
-    const float articulo_mejora_pasiva = 0.1;
+    const int valor_x_comida        = 500;
+    const float articulo_mejora_activa = getPorcMejoraHabilidadActivaSegunCasa(casaElegida); // el % de mejora de cada habilidad segun casa
+    const float valor_x_soldado      = getValorSoldadoSegunCasa(casaElegida);
+    const float valor_x_articulo_soldado       = getValorSoldadoSegunCasa(casaElegida) * articulo_soldados;
+    const int valor_x_mejora_activa = getCostoMejorarHabilidadActivaSegunCasa(casaElegida);
 
     /// BATALLA
-    const int duracion_guerra = 5;
+    const int duracion_guerra = 10;
     int batalla_actual = 0;
-
-
 
     /// Auxiliares
     int cin_opcion_menu;
     int cin_opcion_tienda;
     int cin_batalla_deseas_continuar;
     bool deseas_continuar;
-
+    /// Opciones de menu
     // Menu principal
     const int idx_opcion_menu_batalla = 1;
     const int idx_opcion_menu_tienda  = 2;
@@ -77,13 +76,13 @@ void inicioDeJuego(int estadisticas[], int casa){
         cout << "---------------------------------------"               << endl;
         cout << "            Juego de Tronos            "               << endl;
         cout << "---------------------------------------"               << endl;
-        cout << getNombreCasaSeleccionada(casa)<< endl;
+        cout << getNombreCasaSeleccionada(casaElegida)<< endl;
         cout << "|batallas realizadas : " << batalla_actual                  << endl;
-        cout << "|presupuesto         : " << presupuesto_inicial             << endl;
-        cout << "|oro                 : " << oro                             << endl;
-        cout << "|comida              : " << comida                          << endl;
-        cout << "|soldados            : " << soldados                        << endl;
-        cout << "|pasiva              : " << pasiva_probabilidad             << endl;
+        cout << "|presupuesto inicial       : " << getOroInicialSegunCasa(casaElegida)             << endl;
+        cout << "|oro              : " << recursosJugador[0]                             << endl;
+        cout << "|comida              : " << recursosJugador[1]                            << endl;
+        cout << "|soldados            : " << recursosJugador[2]                          << endl;
+        cout << "|pasiva              : " << recursosJugador[4]               << endl;
         cout << "---------------------------------------"               << endl;
         cout << idx_opcion_menu_batalla << ". IR A LA BATALLA"          << endl;
         cout << idx_opcion_menu_tienda  << ". TIENDA"                   << endl;
@@ -106,14 +105,14 @@ void inicioDeJuego(int estadisticas[], int casa){
 
                 cout << endl;
 
-                cout << "Presiona cualquier tecla para volver al menu.";
+                cout << "Presiona cualquier tecla para volver al menu."<<endl;
                 system("pause");
                 break;
             }
 
-            cout << "Soldados: "                << soldados            << endl;
-            cout << "Comida: "                  << comida              << endl;
-            cout << "Probabilidad  de pasiva: " << pasiva_probabilidad << endl;
+            cout << "Soldados: "                << recursosJugador[2]              << endl;
+            cout << "Comida: "                  << recursosJugador[1]                << endl;
+            cout << "Probabilidad  de pasiva: " << recursosJugador[4] << endl;
 
             cout << endl;
 
@@ -170,18 +169,18 @@ void inicioDeJuego(int estadisticas[], int casa){
                 system("cls");
 
                 cout << "---------------------------------------" << endl;
-                cout << getNombreCasaSeleccionada(casa)                              << endl;
-                cout << "|presupuesto: " << presupuesto_inicial   << endl;
-                cout << "|oro        : " << oro                   << endl;
-                cout << "|comida     : " << comida                << endl;
-                cout << "|soldados   : " << soldados              << endl;
-                cout << "|pasiva     : " << pasiva_probabilidad   << endl;
+                cout << getNombreCasaSeleccionada(casaElegida)                              << endl;
+                cout << "|presupuesto: " << getOroInicialSegunCasa(casaElegida)   << endl;
+                cout << "|oro        : " << recursosJugador[0]                   << endl;
+                cout << "|comida     : " << recursosJugador[1]                << endl;
+                cout << "|soldados   : " << recursosJugador[2]              << endl;
+                cout << "|pasiva     : " << recursosJugador[4]   << endl;
                 cout << "---------------------------------------" << endl;
                 cout << "TIENDA" << endl;
                 cout << "---------------------------------------" << endl;
-                cout << "1. Soldados          $" << valor_x_soldado        << " x " << articulo_soldados        << " unidades. Total por 1000 soldados = $" << valor_x_1000_soldados << endl;
-                cout << "2. Comida            $" << valor_x_comida         << " x " << articulo_comida          << " unidades." << endl;
-                cout << "3. Mejorar pasiva    $" << valor_x_mejora_pasiva  << " x +" << articulo_mejora_pasiva   << "." << endl;
+                cout  << "1. Soldados          $" << valor_x_articulo_soldado << " x  por "<< articulo_soldados << " soldados" << endl;
+                cout << "2. Comida            $" << valor_x_comida        << " x " << articulo_comida          << " unidades." << endl;
+                cout << "3. Mejorar activa   $" << valor_x_mejora_activa  << " x +" << articulo_mejora_activa   << "." << endl;
                 cout << "4. Volver al menu principal" << endl;
                 cout << "---------------------------------------" << endl;
                 cout << "Opcion: ";
@@ -193,70 +192,72 @@ void inicioDeJuego(int estadisticas[], int casa){
                 /// (5) ***********************************  ESTRUCTURA DE SELECCIÓN DE LA TIENDA    ***********************************///
                 switch(cin_opcion_tienda)
                 {
-                case idx_opcion_tienda_soldados:
-                {
-                    if (oro >= valor_x_soldado)
+                    case idx_opcion_tienda_soldados:
                     {
-                        soldados += articulo_soldados;
-                        oro -= valor_x_soldado;
-                        estadisticas[total_gastado_oro]+=valor_x_comida;
+                        if (recursosJugador[0] >= valor_x_articulo_soldado)
+                        {
+                            recursosJugador[2] += articulo_soldados;
+                            recursosJugador[0] -= valor_x_articulo_soldado;
+                            estadisticas[total_gastado_oro]+=valor_x_articulo_soldado;
+                        }
+                        else
+                        {
+                            cout << "No tienes oro suficiente!" << endl;
+
+                            cout << endl;
+
+                            cout << "Presiona cualquier tecla para volver al menu.";
+                            system("pause");
+                        }
+
+                        break;
                     }
-                    else
+                    case idx_opcion_tienda_comida:
                     {
-                        cout << "No tienes oro suficiente!" << endl;
+                        if (recursosJugador[0] >= valor_x_mejora_activa)
+                        {
+                            recursosJugador[1] += articulo_comida;
+                            recursosJugador[0] -= valor_x_mejora_activa;
+                            estadisticas[total_gastado_comida]+= valor_x_mejora_activa;
+                        }
+                        else
+                        {
+                            cout << "No tienes oro suficiente!" << endl;
 
-                        cout << endl;
+                            cout << endl;
 
-                        cout << "Presiona cualquier tecla para volver al menu.";
-                        system("pause");
+                            cout << "Presiona cualquier tecla para volver al menu.";
+                            system("pause");
+                        }
+
+                        break;
                     }
-
-                    break;
-                }
-                case idx_opcion_tienda_comida:
-                {
-                    if (oro >= valor_x_comida)
+                    case idx_opcion_tienda_mejora_pasiva:
                     {
-                        comida += articulo_comida;
-                        oro -= valor_x_comida;
-                        estadisticas[total_gastado_comida]+=valor_x_comida;
+                        if (recursosJugador[0] >= valor_x_mejora_activa)
+                        {
+                            recursosJugador[4]  += articulo_mejora_activa;
+                            recursosJugador[0] -= valor_x_mejora_activa;
+                        }
+                        else
+                        {
+                            cout << "No tienes oro suficiente!" << endl;
+
+                            cout << endl;
+
+                            cout << "Presiona cualquier tecla para volver al menu.";
+                            system("pause");
+                        }
+
+                        break;
                     }
-                    else
+                    case idx_opcion_tienda_volver:
+
+                    default:
                     {
-                        cout << "No tienes oro suficiente!" << endl;
 
-                        cout << endl;
-
-                        cout << "Presiona cualquier tecla para volver al menu.";
-                        system("pause");
+                        break;
                     }
-
-                    break;
-                }
-                case idx_opcion_tienda_mejora_pasiva:
-                {
-                    if (oro >= valor_x_mejora_pasiva)
-                    {
-                        pasiva_probabilidad += articulo_mejora_pasiva;
-                        oro -= valor_x_mejora_pasiva;
-                    }
-                    else
-                    {
-                        cout << "No tienes oro suficiente!" << endl;
-
-                        cout << endl;
-
-                        cout << "Presiona cualquier tecla para volver al menu.";
-                        system("pause");
-                    }
-
-                    break;
-                }
-                case idx_opcion_tienda_volver:
-                default:
-                {
-                    break;
-                }
                 }
                 /// (5) ***********************************  FIN ESTRUCTURA DE SELECCIÓN DE LA TIENDA    ***********************************///
             }

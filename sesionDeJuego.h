@@ -3,9 +3,7 @@
 
 void inicioDeJuego(int estadisticas[], int casa);
 // funciones relacionadas al inicio del juego ----------
-// setCasaElegida(int numCasa)
-/* setRecursosIncialesSegunCasa(int numCasa); */
-// setOroInicialSegunCasa(int numCasa)
+void setRecursosInicialesSegunCasaElegida(int numCasa);
 // setTienda();
 
 #endif // SESIONDEJUEGO_H_INCLUDED

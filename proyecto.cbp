@@ -41,9 +41,6 @@
 		<Unit filename="batallas.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="casas.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="menues.cpp" />
 		<Unit filename="menues.h" />

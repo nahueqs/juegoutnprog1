@@ -37,12 +37,12 @@
 
 1749215454 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.h
 
-1750130520 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.h
+1750214471 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.h
 
 1750205641 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
 	<iostream>
 
-1750208488 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
+1750219881 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
 	<iostream>
 
 1750203708 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.cpp
@@ -51,11 +51,12 @@
 
 1750203675 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.h
 
-1750207722 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.h
+1750218894 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.h
 	<string>
 
-1750208354 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.cpp
+1750222581 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\sesiondejuego.cpp
 	<iostream>
+	<vector>
 	"admCasas.h"
 	"admBatallas.h"
 	<iomanip>
