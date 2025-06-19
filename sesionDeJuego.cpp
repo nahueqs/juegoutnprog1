@@ -25,9 +25,15 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
     system("pause");
     vector<float> recursosJugador(largo_vector_recursos);
     setRecursosInicialesJugador(casaElegida, recursosJugador);
+    /// Constantes y variables configuracion del juego
+    //constantes
     const int duracion_guerra = 10;
+    //const int cant_rondas = 10;
+    const float v_chances_ganar_ronda[duracion_guerra] = { 0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.10 };
+    // variables
     int batalla_actual = 0;
 
+    /// variables y constantes de menu principal
     int cin_opcion_menu;
     const int idx_opcion_menu_batalla = 1;
     const int idx_opcion_menu_tienda  = 2;
