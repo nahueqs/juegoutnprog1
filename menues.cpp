@@ -1,6 +1,7 @@
 #include<iostream>
 #include "menues.h"
 #include "indicesVectores.h"
+#include "constantesJuego.h"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ void mostrarNumeroDeBatalla(int batalla_actual, int duracion_guerra){
     system("pause"); // posible eliminacion
 }
 
-void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra);
+void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra); // a definir
 
 void mostrarRecursosPreBatalla(const std::vector<float>& recursosJugador) {
     cout << "Soldados: " << recursosJugador[soldados] << endl;
@@ -77,9 +78,9 @@ void mostrarRecursosPreBatalla(const std::vector<float>& recursosJugador) {
     cout << endl;
 }
 
-void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& batalla_actual, int duracion_guerra){
+void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rondaActual, int maxRondas){
     int cin_batalla_deseas_continuar;
-    if (batalla_actual > duracion_guerra) {
+    if (rondaActual > maxRondas) {
         cout << "No hay mas batallas por luchar, puedes descansar!" << endl;
         system("pause");
         return;
@@ -94,26 +95,18 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& bata
     } else {
         system("cls");
         // LOGICA DE BATALLA
-        batalla_actual++;
-        mostrarNumeroDeBatalla(batalla_actual, duracion_guerra);
-        //iniciarBatalla(batalla_actual, duracion_guerra, recursosJugador, estadisticas)
-        // mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
+        rondaActual++;
+        mostrarNumeroDeBatalla(rondaActual, maxRondas);
+        //iniciarBatalla(rondaActual, duracion_guerra, recursosJugador, estadisticas)
+        //mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
     }
 }
 
 void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadisticas[]) {
-    const int articulo_soldados= 1000;
-    const int articulo_comida = 500;
-    const int valor_x_comida = 500;
 
     const float articulo_mejora_activa = getArticuloMejoraHabilidadActivaSegunCasa(casaElegida);
     const float valor_x_articulo_soldado = getValorSoldadoSegunCasa(casaElegida) * articulo_soldados;
     const int valor_x_mejora_activa = getCostoMejorarHabilidadActivaSegunCasa(casaElegida);
-
-    const int idx_opcion_tienda_soldados = 1;
-    const int idx_opcion_tienda_comida = 2;
-    const int idx_opcion_tienda_mejora_pasiva = 3;
-    const int idx_opcion_tienda_volver = 4;
 
     int cin_opcion_tienda = 0;
 

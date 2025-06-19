@@ -3,8 +3,6 @@
 
 // funciones relacionadas a las batallas ----------
 // void iniciarBatalla(int numRonda, int numSoldadosCombatientes); FUNCION GRANDE
-// int getRondaActual()
-// int getRondaSiguiente() devuelve rondaActual + 1
 // boolean esRondaFinal() devuelve true si rondaActual > duracionGuerra
 // boolean esJuegoPerdido() devuelve true si cant_batallas_perdidas >= cantidad_para_derrota (4 por defecto)
 // int getSoldadosCombatientes(); devuelve la cant de soldados que pueden pelear (segun comida)
