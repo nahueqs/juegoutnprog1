@@ -37,6 +37,9 @@
 		<Unit filename="admBatallas.h" />
 		<Unit filename="admCasas.cpp" />
 		<Unit filename="admCasas.h" />
+		<Unit filename="constantesJuego.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="indicesVectores.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>

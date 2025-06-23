@@ -12,6 +12,11 @@
 
 using namespace std;
 
+
+int getNumCasaElegida(std::vector<float> v_recursosJugador){
+    return v_recursosJugador[casa_elegida];
+}
+
 void setRecursosInicialesJugador(int numCasaElegida, std::vector<float>& v_recursosJugador) {
     v_recursosJugador[oro] = getOroInicialSegunCasa(numCasaElegida); // oro del jugador
     v_recursosJugador[comida] = 0; //  comida del jugador
@@ -43,6 +48,7 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
         switch(cin_opcion_menu) {
             case idx_opcion_menu_batalla:
                 menuBatalla(casaElegida, recursosJugador, rondaActual, maxRondas);
+               // iniciarBatalla(rondaActual,recursosJugador);
                 break;
             case idx_opcion_menu_tienda:
                 menuTienda(recursosJugador, casaElegida, estadisticas);

@@ -5,6 +5,7 @@
 
 int seleccionDeCasa();
 void mostrarEstadisticas(int estadisticas[], int tam);
+void mostrarNumeroDeBatalla(int batalla_actual, int duracion_guerra);
 void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJugador, int batalla_actual);
 void mostrarResumenBatalla(const std::vector<float>& recursosJugador);
 void menuTienda(std::vector<float>& recursosJugador, int casaElegida, int estadisticas[]);

@@ -2,6 +2,7 @@
 #include "menues.h"
 #include "indicesVectores.h"
 #include "constantesJuego.h"
+#include "admBatallas.h"
 
 using namespace std;
 
@@ -95,9 +96,7 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rond
     } else {
         system("cls");
         // LOGICA DE BATALLA
-        rondaActual++;
-        mostrarNumeroDeBatalla(rondaActual, maxRondas);
-        //iniciarBatalla(rondaActual, duracion_guerra, recursosJugador, estadisticas)
+        iniciarBatalla(rondaActual, recursosJugador);
         //mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
     }
 }

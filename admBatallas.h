@@ -13,7 +13,7 @@
 // void mostrarBalancePostBatalla(int numRonda); (modifica el oro, las tropas perdidas, etc
 
 float getChanceGanarSegunRonda();
-bool iniciarBatalla(int numRonda, int numSoldadosCombatientes);
-
+bool iniciarBatalla(int& rondaActual, const std::vector<float>& recursosJugador);
+bool evaluarHabActiva(const std::vector<float>& recursosJugador);
 
 #endif // BATALLAS_H_INCLUDED

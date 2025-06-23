@@ -7,7 +7,7 @@ const int v_oro_inicial_segun_casa[cant_casas_en_juego] = {75000,50000,50000};
 
 const int v_costo_batallon_segun_casa[cant_casas_en_juego] = {10000, 8500, 12500};
 
-const int v_costo_comida_batallon_segun_casa[cant_casas_en_juego] = {5000,5000,5000};
+const float v_costo_comida_batallon_segun_casa[cant_casas_en_juego] = {5000,5000,5000};
 
 const float v_chanceHabActiva_segun_casa[cant_casas_en_juego] = {0.15, 0.3 ,0.1};
 
@@ -35,7 +35,7 @@ int getOroInicialSegunCasa(int numCasaElegida){
     return v_oro_inicial_segun_casa[numCasaElegida - 1];
 }
 
-int getCostoComidaxBatallonSegunCasa(int numCasaElegida){
+float getCostoComidaxBatallonSegunCasa(int numCasaElegida){
     return v_costo_comida_batallon_segun_casa[numCasaElegida - 1] ;
 }
 
