@@ -42,12 +42,13 @@ int getTropasListas(const std::vector<float> recursosJugador){
     }
 }
 
-bool seActivoChanceHabActiva(float chance_hab_activa){
+bool seActivoChanceHab(float chance_hab){
     srand(static_cast<unsigned int>(time(0)));
-    return  (static_cast<float>(rand()) / RAND_MAX) < chance_hab_activa;
+    return  (static_cast<float>(rand()) / RAND_MAX) < chance_hab;
 }
 
-void ejecutarActiva(std::vector<float>& recursosJugador){
+
+void ejecutarActiva(std::vector<float>& recursosJugador, bool rondaGanada){
     int casaElegida = getNumCasaElegida(recursosJugador);
     switch (casaElegida) {
         case id_lannister :
@@ -83,10 +84,10 @@ void ejecutarPasiva(std::vector<float>& recursosJugador, int rondaActual, int ca
             << getValorSoldadoSegunCasa(casaElegida) <<")."<< endl;
         break;
         }
-        case id_stark : {
+        case id_stark: {
           //  El porcentaje de tropas perdidas en cada batalla se reduce un (nro de ronda*1%)
-          float porcentajeTropasARecuperar = 1.0f * rondaActual;
-          float auxTropasRecuperar =  (porcentajeTropasARecuperar / 100.0f ) * tropasCaidas;
+          float porcentajeTropasARecuperar = 0.01f * rondaActual;
+          float auxTropasRecuperar =  porcentajeTropasARecuperar * tropasCaidas;
           int auxTropasRecuperarInt =  static_cast<int>(auxTropasRecuperar);
           tropasCaidas += auxTropasRecuperarInt;
           recursosJugador[soldados] += auxTropasRecuperarInt;
@@ -104,7 +105,7 @@ void ejecutarPasiva(std::vector<float>& recursosJugador, int rondaActual, int ca
 // cada batalla resta tropas, resta comida, ganas o perdes la batalla en si, y suma oro si ganas
 bool iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int casaElegida) {
     // si la ronda no se pasa del limite de rondas (ejecuta hasta la ultima inclusive)
-    if (rondaActual < maxRondas) {
+    if (rondaActual <= maxRondas) {
         bool rondaGanada = false;
         // incremento ronda y muestro mensaje con num de batalla
         rondaActual++;
@@ -113,6 +114,7 @@ bool iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int c
         // obtengo los soldados que van a pelear segun comida disponible y muestro
         int auxTropasListasRonda = getTropasListas(recursosJugador);
         cout << "Combaten " <<auxTropasListasRonda << " soldados." <<endl;
+        // si son 0 tropas no muestro nada y pierdo la ronda ---
 
         // calculo tropas caidas, muestro y resto de los recursos
         int auxTropasCaidasRonda = getTropasCaidas(rondaActual, auxTropasListasRonda);
@@ -128,13 +130,25 @@ bool iniciarBatalla(int& rondaActual, std::vector<float>& recursosJugador, int c
         ejecutarPasiva(recursosJugador, rondaActual, casaElegida, auxTropasCaidasRonda, auxTropasListasRonda);
 
          // habilidad activa ejecuta si se activa segun porcentaje
-        if (seActivoChanceHabActiva(recursosJugador[chance_hab_activa])) {
-            ejecutarActiva(recursosJugador);
+        if (seActivoChanceHab(recursosJugador[chance_hab_activa])) {
+            ejecutarActiva(recursosJugador, rondaGanada);
         }
+        /*
+        if (rondaGanada){
+            // ganaste por ser casa 3 y se te activo la habilidad. mostrar y sumar oro y salir
+        } else {
+            // no ganaste todavia, se debe evaluar y en base a eso
+            float chancesDeGanar = sumarChancesSegunSoldados(auxTropasListasRonda) + chancesRonda(rondaActual);
+            if (seGanoRonda(chancesDeGanar)) {
+                rondaGanada = true;
+                sumarOroVictoria(rondaActual);
+                // sumarle 1 a batallas ganadas en estadisticas
+
+            } else { // perdiste la ronda
+                // sumarle 1 a batallas perdidas en estadisticas
+            }
+            */
         system("pause");
-        //
-        // oro_a_ganar = getOroAGanar(rondaActual);
-        // comida_a_gastar = getComidaAGastar()
         return false;
         }
 }

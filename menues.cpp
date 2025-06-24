@@ -34,7 +34,7 @@ void mostrarEstadisticas(int estadisticas[], int tam){
     cout<<" total_ganado_oro           ="<<estadisticas[total_ganado_oro]<<endl;
     cout<<" total_ganado_comida        ="<<estadisticas[total_ganado_oro]<<endl;
     cout<<" total_ganado_soldados      ="<<estadisticas[total_ganado_soldados]<<endl;
-    cout << "---------------------------------------"               << endl;
+    cout << "---------------------------------------"  << endl;
 }
 
 void mostrarRecursosJugador(const std::vector<float> recursosJugador){

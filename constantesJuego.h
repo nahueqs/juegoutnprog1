@@ -3,8 +3,20 @@
 
     //constantes config juego
     const int maxRondas = 10;
+    const int vidasTotales = 4;
     const int soldados_x_batallon = 10000;
-    const float v_chances_ganar_ronda[maxRondas] = {0.50, 0.45, 0.40, 0.35, 0.30, 0.25, 0.20, 0.15, 0.10, 0.10};
+    const float v_chances_ganar_ronda[maxRondas] = {
+        0.50, // Ronda 1
+        0.45, // Ronda 2
+        0.40, // Ronda 3
+        0.35, // Ronda 4
+        0.30, // Ronda 5
+        0.25, // Ronda 6
+        0.20, // Ronda 7
+        0.15, // Ronda 8
+        0.10, // Ronda 9
+        0.10  // Ronda 10
+    };
 
     // menu principal
     const int idx_opcion_menu_batalla = 1;

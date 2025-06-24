@@ -27,6 +27,8 @@ void setRecursosInicialesJugador(int numCasaElegida, std::vector<float>& v_recur
     v_recursosJugador[comida_x_batallon] = getCostoComidaxBatallonSegunCasa(numCasaElegida);
 }
 
+
+
 void inicioDeJuego(int estadisticas[], int casaElegida) {
 
     /// Variables del juego
@@ -48,7 +50,7 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
         switch(cin_opcion_menu) {
             case idx_opcion_menu_batalla:
                 menuBatalla(casaElegida, recursosJugador, rondaActual, maxRondas);
-               // iniciarBatalla(rondaActual,recursosJugador);
+//                iniciarBatalla(rondaActual,recursosJugador);
                 break;
             case idx_opcion_menu_tienda:
                 menuTienda(recursosJugador, casaElegida, estadisticas);
