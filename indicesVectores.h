@@ -21,4 +21,7 @@ const int chance_hab_pasiva = 4;
 const int casa_elegida = 5;
 const int comida_x_batallon = 6;
 
+
+
+
 #endif // INDICESVECTORES_H_INCLUDED

@@ -11,6 +11,11 @@
     const int idx_opcion_menu_tienda  = 2;
     const int idx_opcion_menu_volver  = 3;
 
+    // ID casas
+    const int id_lannister = 1;
+    const int id_stark  = 2;
+    const int id_targaryen = 3;
+
     // tienda
     const int articulo_soldados= 1000;
     const int articulo_comida = 10000; // UNIDADES DE COMIDA

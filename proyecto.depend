@@ -43,7 +43,7 @@
 	<vector>
 	"admCasas.h"
 
-1750301092 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
+1750783104 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\menues.cpp
 	<iostream>
 	"menues.h"
 	"indicesVectores.h"
@@ -53,15 +53,18 @@
 1750639884 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
 	<iostream>
 
-1750647436 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.cpp
+1750785906 source:c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.cpp
 	<iostream>
 	<vector>
+	<cstdlib>
+	<ctime>
 	"indicesVectores.h"
 	"constantesJuego.h"
 	"sesionDeJuego.h"
 	"menues.h"
+	"admCasas.h"
 
-1750648653 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.h
+1750783124 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admbatallas.h
 
 1750223008 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.h
 	<string>
@@ -81,7 +84,7 @@
 1750203804 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\admcasas.cpp
 	<iostream>
 
-1750295275 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\indicesvectores.h
+1750720076 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\indicesvectores.h
 
-1750298015 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\constantesjuego.h
+1750732469 c:\users\nahue\documents\utn\prog1\tp_final_grupo_46\constantesjuego.h
 

@@ -66,8 +66,6 @@ void mostrarNumeroDeBatalla(int batalla_actual, int duracion_guerra){
         cout << "~~ ULTIMA BATALLA ~~\n" << endl;
     }
     cout << "Batalla NRO " << batalla_actual << endl;
-    cout << "Presiona cualquier tecla para volver al menu."; // posible eliminacion
-    system("pause"); // posible eliminacion
 }
 
 void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra); // a definir
@@ -96,7 +94,7 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rond
     } else {
         system("cls");
         // LOGICA DE BATALLA
-        iniciarBatalla(rondaActual, recursosJugador);
+        iniciarBatalla(rondaActual, recursosJugador, casaElegida);
         //mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
     }
 }
