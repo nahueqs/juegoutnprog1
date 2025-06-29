@@ -1,8 +1,10 @@
 #include<iostream>
+#include<conio.h>
 #include "menues.h"
 #include "indicesVectores.h"
 #include "constantesJuego.h"
 #include "admBatallas.h"
+#include "admCasas.h"
 
 using namespace std;
 
@@ -23,6 +25,7 @@ int seleccionDeCasa(){
 }
 
 void mostrarEstadisticas(int estadisticas[], int tam){
+    system("cls");
     cout << "---------------------------------------"               << endl;
     cout <<"Estadisticas de la ultima partida: "<<endl;
     cout << "---------------------------------------"               << endl;
@@ -37,14 +40,16 @@ void mostrarEstadisticas(int estadisticas[], int tam){
     cout << "---------------------------------------"  << endl;
 }
 
-void mostrarRecursosJugador(const std::vector<float> recursosJugador){
-    cout << getNombreCasaSeleccionada(recursosJugador[casa_elegida]) << endl;
+void mostrarRecursosJugador(const vector<float> recursosJugador){
+    cout << "> " << getNombreCasaSeleccionada(recursosJugador[casa_elegida]) << endl;
+    printHabilidadesSegunCasa(recursosJugador[casa_elegida]);
     cout << "|presupuesto inicial : " << getOroInicialSegunCasa(recursosJugador[casa_elegida]) << endl;
     cout << "|oro                 : " << recursosJugador[oro] << endl;
     cout << "|comida              : " << recursosJugador[comida] << endl;
     cout << "|soldados            : " << recursosJugador[soldados] << endl;
-    cout << "|pasiva              : " << recursosJugador[chance_hab_pasiva] << endl;
+    cout << "|activa              : " << recursosJugador[chance_hab_activa] << endl;
     cout << "---------------------------------------" << endl;
+    //getche();
 }
 
 void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJugador, int batalla_actual) {
@@ -68,16 +73,21 @@ void mostrarNumeroDeBatalla(int batalla_actual, int duracion_guerra){
     cout << "Batalla NRO " << batalla_actual << endl;
 }
 
-void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra); // a definir
+void mostrarMensajePostBatalla(bool resultado){
+    if(resultado){
+        cout << "Ganaste la ronda!" << endl;
+    }else{
+        cout << "Perdiste la ronda!" << endl;
+    }
+} // a definir
 
 void mostrarRecursosPreBatalla(const std::vector<float>& recursosJugador) {
     cout << "Soldados: " << recursosJugador[soldados] << endl;
     cout << "Comida: " << recursosJugador[comida] << endl;
-    cout << "Probabilidad de pasiva: " << recursosJugador[chance_hab_pasiva] << endl;
+    cout << "Probabilidad de activa: " << recursosJugador[chance_hab_activa] << endl;
     cout << endl;
 }
-
-void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rondaActual, int maxRondas){
+void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rondaActual, int estadisticas[]){
     int cin_batalla_deseas_continuar;
     if (rondaActual > maxRondas) {
         cout << "No hay mas batallas por luchar, puedes descansar!" << endl;
@@ -94,8 +104,9 @@ void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& rond
     } else {
         system("cls");
         // LOGICA DE BATALLA
-        iniciarBatalla(rondaActual, recursosJugador, casaElegida);
-        //mostrarMensajePostBatalla(); puede estar dentro de iniciarBatalla
+        bool resultadoBatalla;
+        resultadoBatalla= iniciarBatalla(rondaActual, recursosJugador, casaElegida, estadisticas);
+        mostrarMensajePostBatalla(resultadoBatalla);
     }
 }
 
@@ -107,6 +118,7 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
 
     int cin_opcion_tienda = 0;
 
+    //refactorizar(pendiente)
     while (true) {
         if (cin_opcion_tienda == idx_opcion_tienda_volver) break;
         system("cls");
@@ -134,16 +146,16 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 }
                 break;
             case idx_opcion_tienda_comida:
-                if (recursosJugador[oro] >= valor_x_mejora_activa) {
+                if (recursosJugador[oro] >= valor_x_comida) {
                     recursosJugador[comida] += articulo_comida;
-                    recursosJugador[oro] -= valor_x_mejora_activa;
-                    estadisticas[total_gastado_comida] += valor_x_mejora_activa;
+                    recursosJugador[oro] -= valor_x_comida;
+                    estadisticas[total_gastado_comida] += valor_x_comida;
                 } else {
                     cout << "No tienes oro suficiente!" << endl;
                     system("pause");
                 }
                 break;
-            case idx_opcion_tienda_mejora_pasiva:
+            case idx_opcion_tienda_mejora_activa:
                 if (recursosJugador[oro] >= valor_x_mejora_activa) {
                     recursosJugador[chance_hab_activa] += articulo_mejora_activa;
                     recursosJugador[oro] -= valor_x_mejora_activa;
@@ -153,7 +165,6 @@ void menuTienda(vector<float>& recursosJugador, int casaElegida, int estadistica
                 }
                 break;
             case idx_opcion_tienda_volver:
-            default:
                 break;
         }}
     }

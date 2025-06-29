@@ -11,7 +11,7 @@ void mostrarMenuPrincipal(int casaElegida, const std::vector<float>& recursosJug
 void mostrarResumenBatalla(const std::vector<float>& recursosJugador);
 void mostrarMensajePreBatalla(int batalla_actual, int duracion_guerra);
 void mostrarMensajePostBatalla(int batalla_actual, int duracion_guerra);
-void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& batalla_actual, int duracion_guerra);
+void menuBatalla(int casaElegida, std::vector<float>& recursosJugador, int& batalla_actual, int estadisticas[]);
 
 // tienda
 void menuTienda(std::vector<float>& recursosJugador, int casaElegida, int estadisticas[]);

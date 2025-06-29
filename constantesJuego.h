@@ -35,7 +35,7 @@
 
     const int idx_opcion_tienda_soldados = 1;
     const int idx_opcion_tienda_comida = 2;
-    const int idx_opcion_tienda_mejora_pasiva = 3;
+    const int idx_opcion_tienda_mejora_activa = 3;
     const int idx_opcion_tienda_volver = 4;
 
 

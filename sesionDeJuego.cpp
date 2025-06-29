@@ -22,7 +22,6 @@ void setRecursosInicialesJugador(int numCasaElegida, std::vector<float>& v_recur
     v_recursosJugador[comida] = 0; //  comida del jugador
     v_recursosJugador[soldados] = 0; //  soldados del jugador
     v_recursosJugador[chance_hab_activa] = getChanceHabActivaInicialSegunCasa(numCasaElegida); // % de activacion de la habilidad activa del jugador
-    v_recursosJugador[chance_hab_pasiva] = 0.5; // pos pasiva
     v_recursosJugador[casa_elegida] = numCasaElegida; // id de la casa elegida
     v_recursosJugador[comida_x_batallon] = getCostoComidaxBatallonSegunCasa(numCasaElegida);
 }
@@ -34,7 +33,6 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
     /// Variables del juego
     vector<float> recursosJugador(largo_vector_recursos);
     int rondaActual = 0;
-
     /// variables de menu principal
     int cin_opcion_menu;
 
@@ -42,15 +40,14 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
     setRecursosInicialesJugador(casaElegida, recursosJugador);
 
     // menu principal
-    cout << "CASA SELECCIONADA: " << getNombreCasaSeleccionada(casaElegida);
+    cout << "CASA SELECCIONADA: " << getNombreCasaSeleccionada(casaElegida)<<endl;
     system("pause");
     while(true) {
         mostrarMenuPrincipal(casaElegida, recursosJugador, rondaActual);
         cin >> cin_opcion_menu;
         switch(cin_opcion_menu) {
             case idx_opcion_menu_batalla:
-                menuBatalla(casaElegida, recursosJugador, rondaActual, maxRondas);
-//                iniciarBatalla(rondaActual,recursosJugador);
+                menuBatalla(casaElegida, recursosJugador, rondaActual, estadisticas);
                 break;
             case idx_opcion_menu_tienda:
                 menuTienda(recursosJugador, casaElegida, estadisticas);
@@ -60,4 +57,6 @@ void inicioDeJuego(int estadisticas[], int casaElegida) {
         }
     }
 }
+
+//crear funcion que reciba la cantidad de rondas ganadas/perdidas,
 
