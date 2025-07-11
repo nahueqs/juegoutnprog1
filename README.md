@@ -1,10 +1,10 @@
-🛡️ Juego de Tronos - TP Integrador Programación I - UTN Facultad regional General Pacheco
+🛡️ Juego de Tronos - TP Integrador Programación I - UTN Facultad Regional General Pacheco - 1C 2025
 
 ¿Cómo se juega?
-El jugador elige una casa (Stark, Lannister, Targaryen), cada una con sus propias ventajas y habilidades pasivas. Deberá:
+El jugador elige una casa (Stark, Lannister, Targaryen), cada una con sus propias ventajas y habilidades activas. Deberá:
 
 - Reclutar soldados 🪖
-- Comprar comida 🍗|
+- Comprar comida 🍗
 - Mejorar habilidades activas ✨
 - Enfrentar 10 batallas ⚔️
   
