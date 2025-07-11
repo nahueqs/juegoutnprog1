@@ -1,6 +1,6 @@
 🛡️ Juego de Tronos - TP Integrador Programación I - UTN Facultad regional General Pacheco
 
-🎮 ¿Cómo se juega?
+¿Cómo se juega?
 El jugador elige una casa (Stark, Lannister, Targaryen), cada una con sus propias ventajas y habilidades pasivas. Deberá:
 
 - Reclutar soldados 🪖
@@ -14,15 +14,13 @@ Condiciones de derrota:
 Condiciones de victoria:
 - Sobrevivir todas las batallas con los mejores recursos posibles.
 
-⚙️ Requisitos del Proyecto
-
+Requisitos del Proyecto
 - CodeBlocks
 - Sin variables globales
 - Código modular con archivos `.h` y `.cpp`
 - Uso de estructuras, funciones y lógica de programación estructurada
 
 Lógica de Batallas
-
 - Cada ronda tiene una **probabilidad base** de victoria decreciente
 - Solo pueden luchar los soldados que hayan sido **alimentados**
 - Se pierden tropas según la fórmula: `5 * ronda %`
